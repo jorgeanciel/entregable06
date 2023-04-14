@@ -29,13 +29,13 @@ const LoginForm = () => {
     const loginData = await loginService(loginFormData);
 
     const userData = {
-      id: loginData.data.user.id,
-      firstName: loginData.data.user.firstName,
-      lastName: loginData.data.user.lastName,
-      email: loginData.data.user.email,
+      id: loginData.user.id,
+      firstName: loginData.user.firstName,
+      lastName: loginData.user.lastName,
+      email: loginData.user.email,
     };
 
-    const token = loginData.data.token;
+    const token = loginData.token;
 
     dispatch(updateUserData(userData));
     dispatch(updateToken(token));
@@ -49,9 +49,11 @@ const LoginForm = () => {
 
   return (
     <>
-      <form onChange={handleChange} onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="emailId">Email : </label>
+      <form onChange={handleChange} onSubmit={handleSubmit} className="m-4 w-1/6">
+        <div className="flex flex-col mb-4">
+          <label htmlFor="emailId" className="text-xl pb-2">
+            Email :{' '}
+          </label>
           <input
             type="email"
             id="emailId"
@@ -59,10 +61,13 @@ const LoginForm = () => {
             name="email"
             value={loginFormData.email}
             required
+            className="border border-violet-300 rounded"
           />
         </div>
-        <div>
-          <label htmlFor="passwrodId">Password : </label>
+        <div className="flex flex-col">
+          <label htmlFor="passwrodId" className="text-xl pb-2">
+            Password :{' '}
+          </label>
           <div>
             <input
               type={toggleType}
@@ -70,6 +75,7 @@ const LoginForm = () => {
               name="password"
               value={loginFormData.password}
               required
+              className="border border-violet-300 rounded w-full"
             />
             <button type="button" onClick={handleClickType}>
               <i className="bx bxs-low-vision"></i>

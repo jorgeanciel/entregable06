@@ -6,6 +6,7 @@ import Purshase from '../views/Purshase';
 import ProductDetail from '../views/ProductDetail';
 import NotFound from '../views/NotFound';
 import ProtectedRoute from '../components/common/ProtectedRoute';
+import { loaderHome } from './loader/loaderHome';
 
 export const router = createBrowserRouter([
   {
@@ -14,13 +15,14 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+        loader: loaderHome,
       },
       {
         path: '/Login',
         element: <Login />,
       },
       {
-        path: '/purchase',
+        path: '/purchases',
         element: (
           <ProtectedRoute>
             <Purshase />
